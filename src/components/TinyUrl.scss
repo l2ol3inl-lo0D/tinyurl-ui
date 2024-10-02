@@ -1,0 +1,57 @@
+.TinyUrl {
+  text-align: center;
+}
+
+.TinyUrl-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+  .Tinyurl-label {
+    align-content: center;
+  }
+
+  .Url-input {
+    height: 20px;
+    margin: 0 20px;
+    padding: 5px;
+  }
+
+  .Button-tinyurl {
+    height: 34px;
+  }
+}
+
+.TinyUrl-link {
+  color: #61dafb;
+}
+
+.error-label {
+  padding-top: 10px;
+  margin-top: 10px;
+  color: red;
+}
+
+.spinner {
+  border: 3px solid rgba(40, 44, 52, 1);
+  border-left-color: #61dafb;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  margin: -5px 20px;
+  background-color: transparent;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
