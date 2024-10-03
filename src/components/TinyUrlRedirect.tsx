@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'
+import config from '../config'
+
 
 const TinyUrlRedirect = () => {
   const { urlId } = useParams<{ urlId: string }>()
@@ -8,7 +10,7 @@ const TinyUrlRedirect = () => {
   useEffect(() => {
     const fetchUrl = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/find?key=${urlId}`, {
+        const response = await fetch(`${config.apiBaseUrl}${config.endpoints.findUrl}?key=${urlId}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'

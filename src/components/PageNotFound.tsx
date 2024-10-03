@@ -1,8 +1,10 @@
 import './PageNotFound.scss'
+import config from '../config'
+
 
 const NotFoundPage = () => {
     const returnToHome = () => {
-        window.location.href = 'http://localhost:3000';
+        window.location.href = `${config.reactBaseUrl}`;
     }
 
   return (

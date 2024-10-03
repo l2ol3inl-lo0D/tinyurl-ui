@@ -1,20 +1,22 @@
-import { useState } from 'react';
-import './TinyUrl.scss';
+import { useState } from 'react'
+import './TinyUrl.scss'
+import config from '../config'
+
 
 const TinyUrl = () => {
   const [targetUrl, setTargetUrl] = useState<string | null>(null)
   const [sourceUrl, setSourceUrl] = useState('')
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null)
 
   const handleShortenUrl = (data: any) => {
     setTargetUrl(null)
     setLoading(true)
     setError(null)
     const body = new URLSearchParams();
-    body.append('url', data);
+    body.append('url', data)
 
-    fetch('http://localhost:8080/shorten', {
+    fetch(`${config.apiBaseUrl}${config.endpoints.shortenUrl}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -25,15 +27,15 @@ const TinyUrl = () => {
         setError("Erreur de chargement.")
         console.error("Error status: " + response.status + " Message: " + data.message)
       }
-      return response.text();
+      return response.text()
     }).then((textData) => {
-      setTargetUrl("http://localhost:3000/" + textData)
+      setTargetUrl(`${config.reactBaseUrl}/${textData}`)
       setLoading(false)
     }).catch(err => {
       console.error(err)
       setLoading(false)
       setError(err)
-    });
+    })
 
   }
 
@@ -59,4 +61,4 @@ const TinyUrl = () => {
   );
 }
 
-export default TinyUrl;
+export default TinyUrl
